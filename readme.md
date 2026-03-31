@@ -17,6 +17,7 @@ Miniclaw - 智能体框架
 
 
 📚 模块结构:
+```
 miniclaw/
 ├── main.py                 # 主入口
 ├── core/
@@ -39,11 +40,12 @@ miniclaw/
 ├── utils/
 │   └── logger.py          # 日志工具
 └── requirements.txt       # 依赖文件
-
+```
 
 
 
 🔄 工作流程:
+```
 用户输入
     ↓
 加载 Skill 文档（skills/*.md）
@@ -62,7 +64,7 @@ miniclaw/
 保存对话到 conversation.md
     ↓
 返回给用户
-
+```
 
 
 
@@ -72,25 +74,31 @@ Python 3.8+
 阿里云 DashScope API Key
 
 2. 安装依赖
+```
 bash
 pip install -r requirements.txt
-3. 配置 API Key
+```
+4. 配置 API Key
 创建 .env 文件：
-
+```
 env
 # DashScope API Key（必需）
 DASHSCOPE_API_KEY=your-dashscope-api-key
+
 
 # 可选配置
 MINICLAW_VERBOSE=true
 MINICLAW_MODEL=qwen-max
 MINICLAW_TEMPERATURE=0.7
+```
 4. 运行
+```
 bash
 python main.py
+```
 💬 使用示例
 交互式对话
-text
+```
 🦞 Miniclaw 启动
 
 命令: /clear(清空历史) /skills(查看技能) /quit(退出)
@@ -106,13 +114,17 @@ text
 
 你: 现在几点了？
 🤖 miniclaw: 现在是 2026年3月31日 21:30:00，星期二
+```
 交互式命令
+```
 命令	说明
 /clear	清除对话历史
 /skills	查看可用技能列表
 /history	查看对话历史
 /quit	退出程序
+```
 🛠️ 可用工具
+```
 1. 天气查询
 触发：询问天气相关
 
@@ -134,8 +146,9 @@ text
 触发：询问当前时间
 
 示例："现在几点"、"今天几号"
-
+```
 📝 自定义 Skill
+```
 Skill 是 Markdown 格式的提示词文档，存放在 skills/ 目录：
 
 markdown
@@ -153,14 +166,17 @@ markdown
 ## 示例对话
 用户：...
 助手：...
+```
 添加新 Skill
+```
 在 skills/ 目录创建 .md 文件中定义技能的行为和触发条件
 
 在 tools/ 目录实现对应的工具函数
 
 在 tools/__init__.py 中注册工具
-
+```
 🔧 添加新工具
+```
 在 tools/ 目录创建工具文件：
 
 python
@@ -176,3 +192,4 @@ def _register(self):
     from .my_tool import my_tool
     self._tools["my_tool"] = my_tool
 在 Skill 文档中描述如何使用这个工具
+```
